@@ -1,19 +1,11 @@
-let userSelection = "scissors";
+// let userSelection = "scissors";
 
-let cheatMode = false;
-
-function cheat(mode) {
-  mode = cheatMode;
-  cheatMode = !mode;
-
-  console.log(`cheatmode is ${cheatMode ? "Active" : "Inactive"}`);
-}
-
-function computerplay() {
+function computerplay(userChoice) {
+  // computer checks what user has input when cheatmode is on and returns the opposite to make the user win
   if (cheatMode) {
-    if (userSelection === "rock") return "scissors";
-    if (userSelection === "paper") return "rock";
-    if (userSelection === "scissors") return "paper";
+    if (userChoice === "rock") return "scissors";
+    if (userChoice === "paper") return "rock";
+    if (userChoice === "scissors") return "paper";
   }
   const randomNumber = Math.random();
   if (randomNumber < 0.34) {
@@ -24,18 +16,18 @@ function computerplay() {
   return "scissors";
 }
 
-const playRound = function (userSelection) {
-  const computerSelection = computerplay();
-  return determineWinner(userSelection, computerSelection);
+const play = function (userChoice) {
+  const computerChoice = computerplay();
+  return Winner(userChoice, computerChoice);
 };
 
-const determineWinner = (userSelection, computerSelection) => {
-  if (userSelection === computerSelection) {
+const Winner = (userChoice, computerChoice) => {
+  if (userChoice === computerChoice) {
     return "Its a tie";
   } else if (
-    (userSelection === "rock" && computerSelection === "scissors") ||
-    (userSelection === "scissors" && computerSelection === "paper") ||
-    (userSelection === "paper" && computerSelection === "rock")
+    (userChoice === "rock" && computerChoice === "scissors") ||
+    (userChoice === "scissors" && computerChoice === "paper") ||
+    (userChoice === "paper" && computerChoice === "rock")
   ) {
     return "User wins";
   } else {
@@ -43,8 +35,17 @@ const determineWinner = (userSelection, computerSelection) => {
   }
 };
 
-console.log(playRound(userSelection));
+let cheatMode = false;
+
+function cheat(mode) {
+  mode = cheatMode;
+  cheatMode = !mode;
+
+  console.log(`cheatmode is ${cheatMode ? "Active" : "Inactive"}`);
+}
+
+console.log(play(userChoice));
 cheat();
-console.log(playRound(userSelection));
+console.log(play(userChoice));
 cheat();
-console.log(playRound(userSelection));
+console.log(play(userChoice));
