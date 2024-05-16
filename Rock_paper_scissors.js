@@ -44,8 +44,8 @@ function cheat(mode) {
   console.log(`cheatmode is ${cheatMode ? "Active" : "Inactive"}`);
 }
 
-console.log(play(userChoice));
-cheat();
-console.log(play(userChoice));
-cheat();
-console.log(play(userChoice));
+// console.log(play);
+// cheat();
+// console.log(play(userChoice));
+// cheat();
+// console.log(play(userChoice));
